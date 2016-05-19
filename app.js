@@ -7,7 +7,7 @@ var io = require("socket.io")(http);
 var aika = 60;
 var ongoingCountdown;
 
-var extracted = function (socket) {
+var startInterval = function (socket) {
     ongoingCountdown = setInterval(function () {
         aika = aika - 1;
         socket.emit("time", aika);
@@ -19,7 +19,10 @@ io.on("connection", function(socket) {
     socket.on("reset", function(){
         console.log("reset");
         aika = 60;
-        extracted(socket);
+        if(ongoingCountdown) {
+            clearInterval(ongoingCountdown);
+        }
+        startInterval(socket);
     });
 });
 
