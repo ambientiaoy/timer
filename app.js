@@ -5,16 +5,21 @@ var http = require("http").Server(app);
 var io = require("socket.io")(http);
 
 var aika = 60;
+var ongoingCountdown;
+
+var extracted = function (socket) {
+    ongoingCountdown = setInterval(function () {
+        aika = aika - 1;
+        socket.emit("time", aika);
+    }, 1000);
+}
 
 io.on("connection", function(socket) {
     console.log("Connection hello");
     socket.on("reset", function(){
         console.log("reset");
         aika = 60;
-        setInterval(function( ) {
-            aika = aika - 1;
-            socket.emit("time", aika);
-        }, 1000);
+        extracted(socket);
     });
 });
 
