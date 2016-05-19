@@ -1,3 +1,5 @@
 $(document).ready( function(){
-    console.log("clint.js toimii");
+    console.log("client.js toimii");
+
+    var socket = io();
 });
