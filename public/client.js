@@ -9,5 +9,11 @@ $(document).ready( function(){
 
     socket.on("time", function(time){
         $("#aika").html(time);
+        if (time < 0) {
+            $("body").css("background-color", "red");
+        }   else{
+            $("body").css("background-color", "#1e90ff");
+
+        }
     });
 });

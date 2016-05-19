@@ -10,15 +10,16 @@ var ongoingCountdown;
 var startInterval = function (socket) {
     ongoingCountdown = setInterval(function () {
         aika = aika - 1;
-        socket.emit("time", aika);
+        io.sockets.emit("time", aika);
     }, 1000);
-}
+};
 
 io.on("connection", function(socket) {
     console.log("Connection hello");
     socket.on("reset", function(){
         console.log("reset");
         aika = 60;
+        io.sockets.emit("time", aika);
         if(ongoingCountdown) {
             clearInterval(ongoingCountdown);
         }
