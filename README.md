@@ -11,7 +11,7 @@ Clone the repository and run ```npm update``` inside the repository. Run ```npm 
 
 ## Accessing it
 
-Fire up your browser and go to ```http://localhost:3000/```.
+Fire up your browser and go to ```http://localhost:8080/```.
 
 ## Licensing
 

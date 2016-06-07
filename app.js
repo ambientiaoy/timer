@@ -37,6 +37,6 @@ app.get("/client.js", function(request, response) {
     response.sendFile(__dirname+"/public/client.js");
 });
 
-http.listen(3000, function() {
+http.listen(8080, function() {
     console.log("Running!");
 });
